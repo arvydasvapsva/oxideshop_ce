@@ -199,3 +199,10 @@
 
     // Control the removal of Setup directory
     $this->blDelSetupDir = true;
+
+    /**
+     * Needed for backwards compatibility. Do not change the value of this property.
+     *
+     * @deprecated since v6.0 (2017-04-03); This property will be removed in the future. Use \OxidEsales\Eshop\Core\Config::isUtf() instead
+     */
+    $this->iUtfMode = 1;
