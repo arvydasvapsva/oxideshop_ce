@@ -165,14 +165,26 @@ class SystemEventHandler
      */
     public function onShopStart()
     {
-        $oProcessor = $this->_getServerProcessor();
-        $oProcessor->process();
-
-        if ($this->_isSendingShopDataEnabled() && !oxRegistry::getUtils()->isSearchEngine()) {
-            $this->_sendShopInformation();
-        }
+        $this->_validateOnline();
 
         $this->_validateOffline();
+    }
+
+    /**
+     * Check if shop is valid online.
+     */
+    protected function _validateOnline()
+    {
+        try {
+            $oProcessor = $this->_getServerProcessor();
+            $oProcessor->process();
+
+            if ($this->_isSendingShopDataEnabled() && !oxRegistry::getUtils()->isSearchEngine()) {
+                $this->_sendShopInformation();
+            }
+        } catch (Exception $eException) {
+            oxRegistry::getUtils()->logger("OLC-Error: " . $eException->getMessage());
+        }
     }
 
     /**
