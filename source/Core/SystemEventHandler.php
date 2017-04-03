@@ -287,9 +287,9 @@ class SystemEventHandler
     }
 
     /**
-     * Return oxConfig from registry.
+     * Return Config from registry.
      *
-     * @return oxConfig
+     * @return Config
      */
     protected function _getConfig()
     {
