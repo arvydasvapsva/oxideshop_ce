@@ -488,6 +488,10 @@ class Article extends \OxidEsales\Eshop\Core\Model\MultiLanguageModel implements
                 $this->$sParam = $mValue;
             }
         }
+        
+        // move this and the following dependencies to the constructor and do not use getters inside of methods
+        $this->config = $this->getConfig();
+        
         parent::__construct();
         $this->init('oxarticles');
     }
